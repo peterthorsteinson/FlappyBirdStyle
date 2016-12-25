@@ -9,8 +9,8 @@ public class Bird : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator anim;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
