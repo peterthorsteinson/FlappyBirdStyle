@@ -10,7 +10,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: StepUpTransform
   productName: FlappyBirdTutorial
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.Company.ProductName
+  bundleIdentifier: com.stepuptransform.FlappyBirdTutorial
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
@@ -453,6 +453,10 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   cloudProjectId: 6b97da1d-06be-41a9-a6ef-0f74733391cf
   projectName: FlappyBirdTutorial

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114051257426562042}
   m_Layer: 0
   m_Name: Columns
-  m_TagString: Untagged
+  m_TagString: GotThru
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1083389118863342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.82, y: 0, z: 0}
+  m_LocalPosition: {x: 5.3859563, y: 0.52058065, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4562704046804740}
@@ -150,9 +150,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1.13, y: 1.99}
+  m_Offset: {x: 1.08, y: 1.76}
   serializedVersion: 2
-  m_Size: {x: 1.04, y: 1.87}
+  m_Size: {x: 1.04, y: 2.27}
 --- !u!61 &61874235022444342
 BoxCollider2D:
   m_ObjectHideFlags: 1

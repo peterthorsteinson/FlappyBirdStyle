@@ -14,16 +14,20 @@ public class GameControl : MonoBehaviour
     public float scrollSpeed = -1.5f;
     private int score = 0;
     private AudioSource audioSource;
-    private AudioClip dieAudioClip;
+
+    private Bird bird;
+    public GameObject coinPrefab;
+    public int coinPoolSize = 5;
+    private GameObject[] coins;
 
     // Use this for initialization
-    void Awake ()
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
             audioSource = GetComponent<AudioSource>();
-            Debug.Log("Awake");
+            Bird bird = GetComponent<Bird>();
         }
         else if (instance != this)
         {
@@ -31,24 +35,54 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update ()
+    void Start()
     {
-		if (gameOver == true && Input.GetMouseButtonDown(0))
+        coins = new GameObject[coinPoolSize];
+        for (int i = 0, x = 0; i < coinPoolSize; i++)
+        {
+            x += Random.Range(1, 3);
+            var pos = new Vector2(x, Random.Range(-3, +3));
+            coins[i] = (GameObject)Instantiate(
+                coinPrefab, pos, Quaternion.identity);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (gameOver == true && Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-	}
+    }
 
-    public void BirdScored()
+    public void BirdScored(int amount)
     {
         if (gameOver)
         {
             return;
         }
-        score++;
+        score += amount;
         scoreText.text = "Score: " + score.ToString();
-        audioSource.PlayOneShot((AudioClip)Resources.Load("score"));
+        if (amount == 5)
+        {
+            audioSource.PlayOneShot((AudioClip)Resources.Load("bell"));
+            var first = coins[0];
+            coins[0] = coins[1];
+            coins[1] = coins[2];
+            coins[2] = coins[3];
+            coins[3] = coins[4];
+            coins[4] = first;
+            first.transform.position = new Vector3(
+                    first.transform.position.x + 10,
+                    first.transform.position.y + Random.Range(-5, +5),
+                    0);
+        }
+        if (amount == 10)
+        {
+            audioSource.PlayOneShot((AudioClip)Resources.Load("giggle"));
+        }
+
     }
 
     public void BirdDied()
@@ -57,6 +91,5 @@ public class GameControl : MonoBehaviour
         gameOver = true;
         audioSource.Stop();
         audioSource.PlayOneShot((AudioClip)Resources.Load("die"));
-        Debug.Log(audioSource.clip);
     }
 }
